@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B1026"/>
+      <stop offset="1" stop-color="#080D1E"/>
+    </linearGradient>
+    <radialGradient id="glowV" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#6D5BFF" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#6D5BFF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowT" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2FE6C6" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#2FE6C6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="arrow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8B7BFF"/>
+      <stop offset="1" stop-color="#45E0C8"/>
+    </linearGradient>
+    <linearGradient id="llmFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B2350"/>
+      <stop offset="1" stop-color="#141A3A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1080" height="1080" fill="url(#bg)"/>
+  <circle cx="240" cy="250" r="540" fill="url(#glowV)"/>
+  <circle cx="880" cy="830" r="540" fill="url(#glowT)"/>
+  <rect x="0.5" y="0.5" width="1079" height="1079" fill="none" stroke="#1C2444" stroke-width="2"/>
+
+  <g font-family="-apple-system, 'Helvetica Neue', 'Segoe UI', Roboto, Arial, sans-serif">
+
+    <!-- header -->
+    <text x="540" y="136" text-anchor="middle" font-size="24" font-weight="700" letter-spacing="8" fill="#5EE6CE">THE AGENTIC LOOP</text>
+    <text x="540" y="212" text-anchor="middle" font-size="66" font-weight="800" fill="#F2F5FC">How an AI agent</text>
+    <text x="540" y="286" text-anchor="middle" font-size="66" font-weight="800" fill="#F2F5FC">actually works</text>
+    <rect x="476" y="312" width="128" height="6" rx="3" fill="url(#arrow)"/>
+
+    <!-- ===== arrows (under nodes) ===== -->
+    <!-- prompt -> llm -->
+    <line x1="296" y1="564" x2="389" y2="564" stroke="url(#arrow)" stroke-width="4"/>
+    <polygon points="397,564 381,556 381,572" fill="#8B7BFF"/>
+
+    <!-- llm -> tools -->
+    <line x1="687" y1="552" x2="780" y2="552" stroke="url(#arrow)" stroke-width="4"/>
+    <polygon points="788,552 772,544 772,560" fill="#45E0C8"/>
+    <text x="734" y="532" text-anchor="middle" font-size="22" font-weight="600" fill="#CBD4EA">tool calls</text>
+
+    <!-- tools -> llm : THE LOOP (glow + main) -->
+    <path d="M 898 620 C 898 750 540 750 540 638" fill="none" stroke="#8B7BFF" stroke-opacity="0.22" stroke-width="16"/>
+    <path d="M 898 620 C 898 750 540 750 540 638" fill="none" stroke="#8B7BFF" stroke-width="6"/>
+    <polygon points="540,630 531,648 549,648" fill="#8B7BFF"/>
+    <text x="719" y="734" text-anchor="middle" font-size="24" font-weight="700" fill="#9A8CFF">results</text>
+
+    <!-- llm -> done -->
+    <path d="M 595 496 C 690 412 815 402 891 394" fill="none" stroke="#34D399" stroke-width="4"/>
+    <polygon points="897,392 884,404 899,408" fill="#34D399"/>
+    <text x="716" y="420" text-anchor="middle" font-size="19" font-weight="600" fill="#9FE6C4">no more tools</text>
+
+    <!-- ===== nodes ===== -->
+    <!-- prompt -->
+    <rect x="70" y="512" width="226" height="104" rx="20" fill="#121A33" stroke="#37426E" stroke-width="2"/>
+    <text x="183" y="572" text-anchor="middle" font-size="28" font-weight="600" fill="#E8ECF7">User prompt</text>
+
+    <!-- final answer -->
+    <rect x="790" y="300" width="212" height="88" rx="20" fill="#0F2433" stroke="#34D399" stroke-width="2.5"/>
+    <text x="896" y="352" text-anchor="middle" font-size="28" font-weight="700" fill="#A8F0D0">Final answer</text>
+
+    <!-- tools -->
+    <rect x="784" y="512" width="226" height="104" rx="20" fill="#121A33" stroke="#37426E" stroke-width="2"/>
+    <text x="897" y="558" text-anchor="middle" font-size="32" font-weight="700" fill="#E8ECF7">Tools</text>
+    <text x="897" y="590" text-anchor="middle" font-size="20" font-weight="500" fill="#94A0BC">act on the world</text>
+
+    <!-- llm (hero) -->
+    <rect x="394" y="494" width="292" height="142" rx="24" fill="url(#llmFill)" stroke="#8B7BFF" stroke-width="3"/>
+    <text x="540" y="558" text-anchor="middle" font-size="46" font-weight="800" fill="#FFFFFF">LLM</text>
+    <text x="540" y="594" text-anchor="middle" font-size="21" font-weight="500" fill="#AEB8D6">decides the next step</text>
+
+    <!-- footer -->
+    <line x1="96" y1="858" x2="984" y2="858" stroke="#222B4C" stroke-width="1"/>
+    <text x="540" y="912" text-anchor="middle" font-size="30" font-weight="600" fill="#DCE2F1">Build to learn. Adopt to ship.</text>
+    <text x="540" y="962" text-anchor="middle" font-size="27" font-weight="700" fill="#9A8CFF">github.com/reza-ariyan/agentry</text>
+    <text x="540" y="1002" text-anchor="middle" font-size="20" font-weight="500" fill="#8A93AC">MIT  ·  .NET 8 / 10  ·  open source</text>
+
+  </g>
+</svg>

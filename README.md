@@ -72,6 +72,16 @@ await foreach (var ev in runner.RunAsync(
 }
 ```
 
+## Samples
+
+Runnable, copy-paste examples in [`samples/`](samples) — most run **offline, no API key**:
+
+- **[MinimalAgent](samples/MinimalAgent)** — the smallest possible agent (one tool, no DI): `dotnet run --project samples/MinimalAgent`
+- **[PersistenceResume](samples/PersistenceResume)** — persist a conversation and resume it after a restart.
+- **[Agentry.Sample](samples/Agentry.Sample)** — tools + streaming events; offline by default, or live via Anthropic.
+
+See [samples/README.md](samples/README.md) for the full list and run commands.
+
 ## Status
 
 Reference implementation / portfolio project. APIs may change. MIT licensed.

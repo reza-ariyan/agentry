@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#2E2280"/>
+      <stop offset="1" stop-color="#5341CC"/>
+    </linearGradient>
+    <linearGradient id="seal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2B2070"/>
+      <stop offset="1" stop-color="#1E1652"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1200" height="675" fill="url(#bg)"/>
+  <!-- subtle loop motif -->
+  <circle cx="1060" cy="120" r="210" fill="none" stroke="#FFFFFF" stroke-opacity="0.06" stroke-width="46"/>
+  <circle cx="150" cy="430" r="170" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="40"/>
+  <circle cx="1010" cy="430" r="90" fill="none" stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="26"/>
+
+  <!-- white footer band with curved top edge -->
+  <path d="M 0 524 Q 600 470 1200 524 L 1200 675 L 0 675 Z" fill="#FFFFFF"/>
+
+  <g font-family="-apple-system, 'Helvetica Neue', 'Segoe UI', Roboto, Arial, sans-serif">
+
+    <!-- seal -->
+    <polygon points="600,48 662,84 662,156 600,192 538,156 538,84" fill="url(#seal)" stroke="#9A8CFF" stroke-width="2"/>
+    <circle cx="600" cy="112" r="26" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+    <polygon points="607,88 595,82 596,95" fill="#FFFFFF"/>
+    <text x="600" y="158" text-anchor="middle" font-size="18" font-weight="800" letter-spacing="1" fill="#C9C2FF">.NET</text>
+
+    <!-- header -->
+    <text x="600" y="252" text-anchor="middle" font-size="22" font-weight="700" letter-spacing="9" fill="#C9C2FF">OPEN SOURCE  ·  .NET AGENT FRAMEWORK</text>
+    <text x="600" y="338" text-anchor="middle" font-size="82" font-weight="800" fill="#FFFFFF">Agentry</text>
+    <text x="600" y="390" text-anchor="middle" font-size="27" font-weight="500" fill="#E3E0FF">A tiny, dependency-light agentic tool-use loop</text>
+
+    <!-- repo pill -->
+    <rect x="358" y="424" width="484" height="54" rx="27" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.36" stroke-width="1.5"/>
+    <text x="600" y="458" text-anchor="middle" font-size="24" font-weight="600" fill="#FFFFFF">github.com/reza-ariyan/agentry</text>
+
+    <!-- footer band content -->
+    <!-- left wordmark -->
+    <polygon points="96,560 120,574 120,602 96,616 72,602 72,574" fill="#2E2280"/>
+    <circle cx="96" cy="582" r="9" fill="none" stroke="#FFFFFF" stroke-width="2.6"/>
+    <text x="140" y="596" font-size="24" font-weight="800" fill="#2E2280">Agentry</text>
+
+    <!-- metadata columns -->
+    <text x="470" y="596" text-anchor="middle" font-size="24" font-weight="800" fill="#5341CC">MIT</text>
+    <text x="470" y="624" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="2" fill="#7A8194">LICENSE</text>
+
+    <text x="660" y="596" text-anchor="middle" font-size="24" font-weight="800" fill="#5341CC">.NET 8 · 10</text>
+    <text x="660" y="624" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="2" fill="#7A8194">TARGETS</text>
+
+    <text x="850" y="596" text-anchor="middle" font-size="24" font-weight="800" fill="#22A06B">8 / 8 green</text>
+    <text x="850" y="624" text-anchor="middle" font-size="13" font-weight="700" letter-spacing="2" fill="#7A8194">CI TESTS</text>
+
+    <!-- right mark -->
+    <text x="1104" y="596" text-anchor="end" font-size="22" font-weight="800" fill="#2E2280">.NET</text>
+    <text x="1104" y="622" text-anchor="end" font-size="13" font-weight="600" letter-spacing="1" fill="#7A8194">8 / 10</text>
+
+  </g>
+</svg>

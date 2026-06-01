@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E9F0FF"/>
+      <stop offset="1" stop-color="#F2EDFF"/>
+    </linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#23306A" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1080" height="1080" fill="url(#bg)"/>
+
+  <!-- title -->
+  <g font-family="-apple-system, 'Helvetica Neue', 'Segoe UI', Roboto, Arial, sans-serif">
+    <text x="80" y="138" font-size="50" font-weight="800" fill="#10203F">Build an <tspan fill="#2563EB">agentic system</tspan> in C#</text>
+    <text x="82" y="188" font-size="25" font-weight="500" fill="#5C6B88">Define tools · pick a model · run the loop</text>
+  </g>
+
+  <!-- code card -->
+  <rect x="80" y="240" width="920" height="500" rx="26" fill="#15161E" filter="url(#sh)"/>
+  <circle cx="120" cy="288" r="9" fill="#FF5F57"/>
+  <circle cx="150" cy="288" r="9" fill="#FEBC2E"/>
+  <circle cx="180" cy="288" r="9" fill="#28C840"/>
+  <text x="214" y="296" font-family="'SF Mono','JetBrains Mono',Menlo,Consolas,monospace" font-size="22" font-weight="600" fill="#C8CEDC">Program.cs</text>
+  <line x1="80" y1="320" x2="1000" y2="320" stroke="#262838" stroke-width="1.5"/>
+
+  <g font-family="'SF Mono','JetBrains Mono',Menlo,Consolas,'Courier New',monospace" font-size="22" fill="#D4D4D4">
+    <!-- L1 comment -->
+    <text x="126" y="372" fill="#6A9B6E">// register your tools + a model provider</text>
+    <!-- L2 -->
+    <text x="126" y="414"><tspan fill="#9CDCFE">services</tspan>.<tspan fill="#DCDCAA">AddAgentry</tspan>&lt;<tspan fill="#4EC9B0">Ctx</tspan>&gt;(a =&gt; a.<tspan fill="#DCDCAA">AddTool</tspan>&lt;<tspan fill="#4EC9B0">CreateUserTool</tspan>&gt;());</text>
+    <!-- L3 -->
+    <text x="126" y="456"><tspan fill="#9CDCFE">services</tspan>.<tspan fill="#DCDCAA">AddAnthropicChatModel</tspan>(o =&gt; o.ApiKey = apiKey);</text>
+    <!-- L5 comment -->
+    <text x="126" y="528" fill="#6A9B6E">// run the agent and stream every step</text>
+    <!-- L6 -->
+    <text x="126" y="570"><tspan fill="#569CD6">await foreach</tspan> (<tspan fill="#569CD6">var</tspan> ev <tspan fill="#569CD6">in</tspan> agent.<tspan fill="#DCDCAA">RunAsync</tspan>(request, <tspan fill="#569CD6">new</tspan> <tspan fill="#4EC9B0">Ctx</tspan>()))</text>
+    <!-- L7 -->
+    <text x="179" y="612"><tspan fill="#9CDCFE">Console</tspan>.<tspan fill="#DCDCAA">WriteLine</tspan>(ev);   <tspan fill="#6A9B6E">// Started · ToolCall · Done</tspan></text>
+    <!-- L8 result-ish comment -->
+    <text x="126" y="684" fill="#7C8597">// ~5 lines. The loop, tools, retries and streaming</text>
+    <text x="126" y="714" fill="#7C8597">// are handled for you.</text>
+  </g>
+
+  <!-- CTA + footer -->
+  <g font-family="-apple-system, 'Helvetica Neue', 'Segoe UI', Roboto, Arial, sans-serif">
+    <text x="80" y="824" font-size="34" font-weight="800" fill="#10203F">Open source · MIT · <tspan fill="#2563EB">.NET 8 / 10</tspan></text>
+    <text x="80" y="876" font-size="30" font-weight="800" fill="#2563EB">★  github.com/reza-ariyan/agentry</text>
+
+    <!-- footer wordmark -->
+    <circle cx="112" cy="985" r="30" fill="#2E2280"/>
+    <text x="112" y="995" text-anchor="middle" font-size="30" font-weight="800" fill="#FFFFFF">R</text>
+    <text x="158" y="978" font-size="26" font-weight="700" fill="#10203F">Reza Ariyan</text>
+    <text x="158" y="1006" font-size="20" font-weight="500" fill="#5C6B88">building Agentry · open source</text>
+  </g>
+</svg>

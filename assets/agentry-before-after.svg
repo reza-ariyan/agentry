@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0B1026"/>
+      <stop offset="1" stop-color="#080D1E"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#C79A3A" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#C79A3A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2FE6C6" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#2FE6C6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="arrow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8B7BFF"/>
+      <stop offset="1" stop-color="#34D6B4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- background -->
+  <rect x="0" y="0" width="1080" height="1080" fill="url(#bg)"/>
+  <circle cx="280" cy="560" r="420" fill="url(#glowA)"/>
+  <circle cx="820" cy="560" r="460" fill="url(#glowB)"/>
+  <rect x="0.5" y="0.5" width="1079" height="1079" fill="none" stroke="#1C2444" stroke-width="2"/>
+
+  <g font-family="-apple-system, 'Helvetica Neue', 'Segoe UI', Roboto, Arial, sans-serif">
+
+    <!-- header -->
+    <text x="540" y="128" text-anchor="middle" font-size="23" font-weight="700" letter-spacing="6" fill="#5EE6CE">MICROSOFT AGENT FRAMEWORK MIGRATION</text>
+    <text x="540" y="214" text-anchor="middle" font-size="74" font-weight="800" fill="#F2F5FC">Before <tspan fill="#8B7BFF">&#8594;</tspan> After</text>
+
+    <!-- ===== panels ===== -->
+    <!-- BEFORE -->
+    <rect x="58" y="276" width="448" height="566" rx="24" fill="#0F1530" stroke="#2A3354" stroke-width="2"/>
+    <text x="282" y="338" text-anchor="middle" font-size="30" font-weight="800" letter-spacing="2" fill="#E2C77E">BEFORE</text>
+    <text x="282" y="372" text-anchor="middle" font-size="21" font-weight="500" fill="#8A93AC">by hand</text>
+    <line x1="104" y1="398" x2="460" y2="398" stroke="#2A3354" stroke-width="1.5"/>
+
+    <circle cx="124" cy="460" r="5" fill="#E2C77E"/>
+    <text x="154" y="468" font-size="25" font-weight="500" fill="#DCE1EF">~800 lines, all mine</text>
+    <circle cx="124" cy="540" r="5" fill="#E2C77E"/>
+    <text x="154" y="548" font-size="25" font-weight="500" fill="#DCE1EF">Raw Anthropic API</text>
+    <circle cx="124" cy="620" r="5" fill="#E2C77E"/>
+    <text x="154" y="628" font-size="25" font-weight="500" fill="#DCE1EF">Hand-rolled loop &amp; retry</text>
+    <circle cx="124" cy="700" r="5" fill="#E2C77E"/>
+    <text x="154" y="708" font-size="25" font-weight="500" fill="#DCE1EF">One model provider</text>
+    <circle cx="124" cy="780" r="5" fill="#E2C77E"/>
+    <text x="154" y="788" font-size="25" font-weight="500" fill="#DCE1EF">My own persistence</text>
+
+    <!-- AFTER -->
+    <rect x="574" y="276" width="448" height="566" rx="24" fill="#0C1E2A" stroke="#2E5F52" stroke-width="2"/>
+    <text x="798" y="338" text-anchor="middle" font-size="30" font-weight="800" letter-spacing="2" fill="#74E7C2">AFTER</text>
+    <text x="798" y="372" text-anchor="middle" font-size="19" font-weight="500" fill="#9FB6C2">Microsoft Agent Framework</text>
+    <line x1="620" y1="398" x2="976" y2="398" stroke="#234D45" stroke-width="1.5"/>
+
+    <polyline points="631,460 638,468 652,452" fill="none" stroke="#34D6B4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="668" y="468" font-size="25" font-weight="500" fill="#E4ECF2">Built-in agent loop</text>
+    <polyline points="631,540 638,548 652,532" fill="none" stroke="#34D6B4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="668" y="548" font-size="25" font-weight="500" fill="#E4ECF2">Any provider</text>
+    <polyline points="631,620 638,628 652,612" fill="none" stroke="#34D6B4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="668" y="628" font-size="25" font-weight="500" fill="#E4ECF2">Maintained by Microsoft</text>
+    <polyline points="631,700 638,708 652,692" fill="none" stroke="#34D6B4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="668" y="708" font-size="25" font-weight="500" fill="#E4ECF2">GA · MIT · open source</text>
+    <polyline points="631,780 638,788 652,772" fill="none" stroke="#34D6B4" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="668" y="788" font-size="25" font-weight="500" fill="#E4ECF2">I kept just my tools</text>
+
+    <!-- center arrow badge -->
+    <circle cx="540" cy="559" r="40" fill="url(#arrow)"/>
+    <text x="540" y="575" text-anchor="middle" font-size="42" font-weight="800" fill="#0B1026">&#8594;</text>
+
+    <!-- footer -->
+    <text x="540" y="916" text-anchor="middle" font-size="29" font-weight="600" fill="#DCE2F1">Build to learn. Adopt to ship.</text>
+    <text x="540" y="966" text-anchor="middle" font-size="26" font-weight="700" fill="#9A8CFF">github.com/reza-ariyan/agentry</text>
+
+  </g>
+</svg>
