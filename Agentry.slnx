@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Agentry.Abstractions/Agentry.Abstractions.csproj" />
+    <Project Path="src/Agentry.Core/Agentry.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Agentry.Tests/Agentry.Tests.csproj" />
+  </Folder>
+</Solution>

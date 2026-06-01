@@ -1,0 +1,8 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>Agentry.Abstractions</PackageId>
+    <Description>Core abstractions for Agentry — a lightweight, provider-agnostic agentic tool-use loop for .NET. Tool contracts, the IChatModel provider seam, neutral conversation messages, agent events, and pluggable conversation persistence.</Description>
+  </PropertyGroup>
+
+</Project>

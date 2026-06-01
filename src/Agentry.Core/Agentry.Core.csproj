@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>Agentry.Core</PackageId>
+    <Description>The Agentry engine: the agentic tool-use loop, tool executor, dependency-free JSON-schema generation, a typed Tool&lt;TInput,TContext&gt; base, an in-memory conversation store, and DI wiring. A lightweight, provider-agnostic agent framework for .NET.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Agentry.Abstractions\Agentry.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+
+</Project>
