@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/samples/">
     <Project Path="samples/Agentry.Sample/Agentry.Sample.csproj" />
+    <Project Path="samples/FileQaAgent/FileQaAgent.csproj" />
     <Project Path="samples/MinimalAgent/MinimalAgent.csproj" />
     <Project Path="samples/PersistenceResume/PersistenceResume.csproj" />
   </Folder>

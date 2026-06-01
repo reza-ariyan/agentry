@@ -5,6 +5,7 @@ just `dotnet run` and watch the agent loop work.
 
 | Sample | What it shows | API key? |
 |---|---|---|
+| [**FileQaAgent**](FileQaAgent) | **A real, full app** — chat with a folder of files using a real LLM + real file tools. Just set config. | **Yes** |
 | [MinimalAgent](MinimalAgent) | The smallest possible agent — one tool, no DI, runs offline | No |
 | [PersistenceResume](PersistenceResume) | Persist a conversation and resume it after a "restart" | No |
 | [Agentry.Sample](Agentry.Sample) | Tools + streaming progress events; offline by default, or live via Anthropic | Optional |
