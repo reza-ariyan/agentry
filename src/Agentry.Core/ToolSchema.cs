@@ -23,7 +23,6 @@ public static class ToolSchema
     };
 
     private static readonly ConcurrentDictionary<Type, JsonElement> Cache = new();
-    private static readonly NullabilityInfoContext NullCtx = new();
 
     /// <summary>Get (and cache) the JSON-Schema object for <typeparamref name="T"/>.</summary>
     public static object For<T>() => For(typeof(T));
@@ -115,6 +114,7 @@ public static class ToolSchema
     {
         if (Nullable.GetUnderlyingType(p.PropertyType) is not null) return false;
         if (p.PropertyType.IsValueType) return true;
-        return NullCtx.Create(p).WriteState != NullabilityState.Nullable;
+        // NullabilityInfoContext is not thread-safe — use a fresh instance per call.
+        return new NullabilityInfoContext().Create(p).WriteState != NullabilityState.Nullable;
     }
 }

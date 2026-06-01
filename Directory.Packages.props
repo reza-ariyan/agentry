@@ -10,6 +10,7 @@
     <PackageVersion Include="NJsonSchema" Version="11.*" />
     <!-- DI helpers -->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.*" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.*" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.*" />
     <!-- Test -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.*" />

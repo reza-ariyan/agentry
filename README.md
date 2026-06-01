@@ -58,15 +58,15 @@ public sealed class CreateUserTool(IUserService users) : Tool<CreateUserTool.Inp
     public sealed class Input { [Description("Email address")] public string Email { get; set; } = ""; }
 }
 
-// 3. Register + run
-services.AddAgentry<MyContext>(o => o.AddTool<CreateUserTool>())
-        .AddAnthropic(o => o.ApiKey = config["Anthropic:Key"]);
+// 3. Register
+services.AddAgentry<MyContext>(a => a.AddTool<CreateUserTool>());
+services.AddAnthropicChatModel(o => o.ApiKey = config["Anthropic:Key"]!);
 
-await foreach (var ev in runner.RunAsync(new AgentRequest {
-    System = "You are a helpful admin assistant.",
-    Prompt = "Create a user for jane@acme.com",
-    State  = new MyContext(),
-}, ct))
+// 4. Run — stream events as the agent works
+var runner = provider.GetRequiredService<IAgentRunner<MyContext>>();
+await foreach (var ev in runner.RunAsync(
+    new AgentRequest { System = "You are a helpful admin assistant.", Prompt = "Create a user for jane@acme.com" },
+    new MyContext()))
 {
     // ev: Started | AssistantText | ToolStarted | ToolFinished | Completed | Failed
 }

@@ -1,0 +1,23 @@
+name: release
+
+# Packs and publishes to NuGet when a v* tag is pushed.
+# Requires a repository secret named NUGET_API_KEY. The maintainer owns the key;
+# this workflow never logs it.
+on:
+  push:
+    tags: [ 'v*' ]
+
+jobs:
+  pack-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: |
+            8.0.x
+            10.0.x
+      - run: dotnet pack src/Agentry.Abstractions -c Release -o ./artifacts
+      - run: dotnet pack src/Agentry.Core -c Release -o ./artifacts
+      - run: dotnet pack src/Agentry.Anthropic -c Release -o ./artifacts
+      - run: dotnet nuget push "./artifacts/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
