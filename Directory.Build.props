@@ -16,8 +16,8 @@
     <Version>0.1.0-preview.1</Version>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageProjectUrl>https://github.com/rezaariyan/agentry</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/rezaariyan/agentry</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/reza-ariyan/agentry</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/reza-ariyan/agentry</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>ai;agent;agentic;llm;tools;tool-calling;anthropic;dotnet</PackageTags>
     <IncludeSymbols>true</IncludeSymbols>
