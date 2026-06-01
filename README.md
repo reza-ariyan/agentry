@@ -15,7 +15,7 @@
 
 ## Origin
 
-Agentry is the agentic engine I built **from scratch** to power an AI page-builder (72 tools) inside a 45-microservice production SaaS — *before* [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) existed. It's open-sourced here as a clean, dependency-light **reference implementation** of how an agentic tool-use loop actually works under the hood: the loop, the tool protocol, schema generation, persistence/resume, and a provider seam.
+Agentry is a **clean-room reimplementation** of an agentic engine I built (72 tools, an autonomous tool-use loop, streaming, crash-resume) to power a production multi-tenant SaaS — *before* [Microsoft Agent Framework](https://github.com/microsoft/agent-framework) existed. The original is proprietary and tightly coupled to a private platform; Agentry is the generalized, dependency-light version, open-sourced as a **reference implementation** of how an agentic tool-use loop actually works under the hood: the loop, the tool protocol, schema generation, persistence/resume, and a provider seam. See **[docs/ORIGIN.md](docs/ORIGIN.md)** for sanitized excerpts of the original and exactly how Agentry differs.
 
 > **Building production agents today?** Look at Microsoft Agent Framework first — it's the GA, Microsoft-backed standard. Agentry is intentionally tiny: a great way to *understand* the machinery, or to drop a minimal agent into an app without a heavyweight platform.
 
