@@ -9,13 +9,15 @@
     <!-- Schema generation from C# input types (Agentry.Core) -->
     <PackageVersion Include="NJsonSchema" Version="11.*" />
     <!-- DI helpers -->
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.*" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.*" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.*" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.*" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.*" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.*" />
     <!-- Config (used by the FileQaAgent sample) -->
-    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="8.*" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="8.*" />
-    <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.*" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.*" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="10.*" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="10.*" />
+    <!-- EF Core SQLite (used by the NewsAgent sample) -->
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.*" />
     <!-- Test -->
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.*" />
     <PackageVersion Include="xunit" Version="2.*" />
