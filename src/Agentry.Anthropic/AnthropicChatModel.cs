@@ -1,3 +1,4 @@
+using System.Net;
 using System.Text;
 using System.Text.Json;
 
@@ -18,10 +19,14 @@ public sealed class AnthropicChatModel : IChatModel
     private readonly HttpClient _http;
     private readonly AnthropicOptions _options;
 
-    public AnthropicChatModel(AnthropicOptions options, HttpClient? httpClient = null)
+    /// <summary>
+    /// Create the adapter. The <paramref name="httpClient"/> is supplied by <c>IHttpClientFactory</c>
+    /// when registered via <c>AddAnthropicChatModel</c>; pass your own for direct/no-DI use or tests.
+    /// </summary>
+    public AnthropicChatModel(HttpClient httpClient, AnthropicOptions options)
     {
+        _http = httpClient;
         _options = options;
-        _http = httpClient ?? new HttpClient();
         _http.BaseAddress ??= new Uri(_options.BaseUrl);
     }
 
@@ -48,21 +53,44 @@ public sealed class AnthropicChatModel : IChatModel
         httpRequest.Headers.Add("x-api-key", _options.ApiKey);
         httpRequest.Headers.Add("anthropic-version", _options.Version);
 
-        using var httpResponse = await _http.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
-        var payload = await httpResponse.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+        HttpResponseMessage httpResponse;
+        string payload;
+        try
+        {
+            httpResponse = await _http.SendAsync(httpRequest, cancellationToken).ConfigureAwait(false);
+            payload = await httpResponse.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+        }
+        catch (HttpRequestException ex)
+        {
+            return new ModelResponse { StopReason = StopReason.Error, Error = $"network error: {ex.Message}", IsRetryable = true };
+        }
 
-        if (!httpResponse.IsSuccessStatusCode)
-            return new ModelResponse { StopReason = StopReason.Error, Error = $"HTTP {(int)httpResponse.StatusCode}: {Truncate(payload)}" };
+        using (httpResponse)
+        {
+            if (!httpResponse.IsSuccessStatusCode)
+                return new ModelResponse
+                {
+                    StopReason = StopReason.Error,
+                    Error = $"HTTP {(int)httpResponse.StatusCode}: {Truncate(payload)}",
+                    IsRetryable = IsTransient(httpResponse.StatusCode),
+                };
 
-        return Parse(payload);
+            return Parse(payload);
+        }
     }
+
+    private static bool IsTransient(HttpStatusCode status) => (int)status switch
+    {
+        408 or 409 or 429 or 500 or 502 or 503 or 504 or 529 => true,
+        _ => false,
+    };
 
     private static object? ToWire(AgentMessage message)
     {
         switch (message.Role)
         {
             case MessageRole.User:
-                return new { role = "user", content = new object[] { new { type = "text", text = message.Text ?? "" } } };
+                return new { role = "user", content = new object[] { new { type = "text", text = NonEmpty(message.Text) } } };
 
             case MessageRole.Assistant:
                 var blocks = new List<object>();
@@ -70,11 +98,15 @@ public sealed class AnthropicChatModel : IChatModel
                     blocks.Add(new { type = "text", text = message.Text });
                 foreach (var call in message.ToolCalls)
                     blocks.Add(new { type = "tool_use", id = call.Id, name = call.Name, input = call.Arguments });
+                if (blocks.Count == 0) // Anthropic rejects empty content arrays — emit a minimal placeholder.
+                    blocks.Add(new { type = "text", text = "(no content)" });
                 return new { role = "assistant", content = blocks };
 
             case MessageRole.Tool:
+                if (message.ToolResults.Count == 0)
+                    return null; // nothing to send for an empty tool turn
                 var results = message.ToolResults
-                    .Select(r => (object)new { type = "tool_result", tool_use_id = r.CallId, content = r.Content, is_error = !r.IsSuccess })
+                    .Select(r => (object)new { type = "tool_result", tool_use_id = r.CallId, content = NonEmpty(r.Content), is_error = !r.IsSuccess })
                     .ToList();
                 return new { role = "user", content = results };
 
@@ -82,6 +114,8 @@ public sealed class AnthropicChatModel : IChatModel
                 return null; // System is sent via the top-level "system" field, not as a message.
         }
     }
+
+    private static string NonEmpty(string? s) => string.IsNullOrEmpty(s) ? " " : s;
 
     private static ModelResponse Parse(string payload)
     {
@@ -95,14 +129,20 @@ public sealed class AnthropicChatModel : IChatModel
         {
             foreach (var block in content.EnumerateArray())
             {
-                var type = block.GetProperty("type").GetString();
-                if (type == "text")
-                    text.Append(block.GetProperty("text").GetString());
-                else if (type == "tool_use")
-                    toolCalls.Add(new ToolCall(
-                        block.GetProperty("id").GetString()!,
-                        block.GetProperty("name").GetString()!,
-                        block.GetProperty("input").Clone()));
+                if (!block.TryGetProperty("type", out var typeEl)) continue;
+                var type = typeEl.GetString();
+
+                if (type == "text" && block.TryGetProperty("text", out var t))
+                {
+                    text.Append(t.GetString());
+                }
+                else if (type == "tool_use"
+                         && block.TryGetProperty("id", out var id)
+                         && block.TryGetProperty("name", out var name)
+                         && block.TryGetProperty("input", out var input))
+                {
+                    toolCalls.Add(new ToolCall(id.GetString()!, name.GetString()!, input.Clone()));
+                }
             }
         }
 

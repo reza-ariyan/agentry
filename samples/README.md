@@ -28,8 +28,15 @@ var executor = new ToolExecutor<MyState>([new MyTool()]);
 var runner   = new AgentRunner<MyState>(model, executor, new InMemoryConversationStore());
 
 await foreach (var ev in runner.RunAsync(new AgentRequest { Prompt = "..." }, new MyState()))
-    Console.WriteLine(ev);   // Started · ToolStarted · ToolFinished · AssistantText · Completed
+    Console.WriteLine(ev);   // Started · AssistantText · ToolStarted · ToolFinished · UsageUpdated · Completed · Failed
 ```
+
+Just want the final answer instead of the stream? Use `await runner.RunToCompletionAsync(...)`.
 
 See **[MinimalAgent/Program.cs](MinimalAgent/Program.cs)** for the full, runnable version
 (including how to define a tool with an auto-generated schema).
+
+## Learn more
+
+- [Concepts](../docs/concepts.md) — the whole mental model in one page
+- [Writing a tool](../docs/writing-a-tool.md) · [Providers](../docs/providers.md) · [Persistence & resume](../docs/persistence.md)

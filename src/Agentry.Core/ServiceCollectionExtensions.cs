@@ -8,7 +8,8 @@ public static class ServiceCollectionExtensions
 {
     /// <summary>
     /// Register the Agentry engine for a given per-run state type <typeparamref name="TContext"/>.
-    /// Add tools via the returned builder, and register an <see cref="IChatModel"/> (e.g. <c>AddAnthropic</c>).
+    /// Add tools via the returned builder, and register an <see cref="IChatModel"/>
+    /// (e.g. <c>services.AddAnthropicChatModel(...)</c>).
     /// </summary>
     public static AgentryBuilder<TContext> AddAgentry<TContext>(
         this IServiceCollection services, Action<AgentryBuilder<TContext>>? configure = null)
@@ -29,7 +30,7 @@ public sealed class AgentryBuilder<TContext>(IServiceCollection services)
     /// <summary>The underlying service collection.</summary>
     public IServiceCollection Services { get; } = services;
 
-    /// <summary>Register a tool type.</summary>
+    /// <summary>Register a tool type (resolved from DI, so it can take constructor dependencies).</summary>
     public AgentryBuilder<TContext> AddTool<TTool>() where TTool : class, ITool<TContext>
     {
         Services.AddSingleton<ITool<TContext>, TTool>();
@@ -39,7 +40,8 @@ public sealed class AgentryBuilder<TContext>(IServiceCollection services)
     /// <summary>Register a pre-built tool instance.</summary>
     public AgentryBuilder<TContext> AddTool(ITool<TContext> tool)
     {
-        Services.AddSingleton(tool);
+        // Register under ITool<TContext> so the executor (which resolves IEnumerable<ITool<TContext>>) sees it.
+        Services.AddSingleton<ITool<TContext>>(tool);
         return this;
     }
 

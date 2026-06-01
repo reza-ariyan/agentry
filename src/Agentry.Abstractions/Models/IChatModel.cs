@@ -46,4 +46,11 @@ public sealed record ModelResponse
 
     /// <summary>Error detail when <see cref="StopReason"/> is <see cref="StopReason.Error"/>.</summary>
     public string? Error { get; init; }
+
+    /// <summary>
+    /// When <see cref="StopReason"/> is <see cref="StopReason.Error"/>, whether the error is transient
+    /// (e.g. HTTP 429/5xx, network blips) and worth retrying. Permanent errors (bad key, bad request)
+    /// should set this to <c>false</c> so the loop fails fast.
+    /// </summary>
+    public bool IsRetryable { get; init; }
 }

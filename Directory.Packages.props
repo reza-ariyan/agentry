@@ -6,12 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Schema generation from C# input types (Agentry.Core) -->
-    <PackageVersion Include="NJsonSchema" Version="11.*" />
-    <!-- DI helpers -->
+    <!-- DI + HTTP -->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.*" />
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="10.*" />
     <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="10.*" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="10.*" />
     <!-- Config (used by the FileQaAgent sample) -->
     <PackageVersion Include="Microsoft.Extensions.Configuration" Version="10.*" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="10.*" />
